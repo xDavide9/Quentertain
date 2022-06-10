@@ -1,10 +1,11 @@
 import axios from "axios";
 import APIKEY from "../config";
 import { useEffect, useState } from "react";
+import { Empty } from "antd";
 
 // discover a movie id by searching keywords
 
-const Discover = (props) => {
+const SearchResultsList = (props) => {
   const [isSuccessfulRequest, setSuccessfulRequest] = useState(false);
   const [results, setResults] = useState([]);
 
@@ -24,11 +25,7 @@ const Discover = (props) => {
       });
   }, [props.query, props.language]);
 
-  if (results.length === 0 || !isSuccessfulRequest)
-    return (
-      // do it better with the cool icon
-      <div>no data</div>
-    );
+  if (results.length === 0 || !isSuccessfulRequest) return <Empty />;
 
   return (
     <div>
@@ -39,4 +36,4 @@ const Discover = (props) => {
   );
 };
 
-export default Discover;
+export default SearchResultsList;

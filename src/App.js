@@ -1,42 +1,27 @@
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Input, Select } from "antd";
 import { useState } from "react";
-import Details from "./components/Details";
-import Discover from "./components/Discover";
+import SearchResultsList from "./components/SearchResultsList";
 import "antd/dist/antd.min.css";
 
 const { Header, Content, Footer } = Layout;
+const { Search } = Input;
+const { Option } = Select;
 
-// THE APP SHOULD FOCUS ON DIFFERENT WAYS TO LOOK FOR A MOVIE
-// SO THE MENU SHOULD HAVE ENTRIES LIKE RANDOM SEARCH, SEARCH BASED ON A KEYWORD, COMPANIES, COUNTRIES, GENRES ETC...
-// AND A DETAIL ENTRY CONNECTED TO THEM IN SOME WAY TO BE DEFINED (BECAUSE GIVING THE ID TO THE USER THAT HAS TO INPUT IT IS POOR...)
-// EACH MENU RENDERS DIFFERENT CONTENT ON THE SCREEN THROUGH A COMPONENT WITH THE SAME NAME
+// do not make the mistake of working on the menu if you dont know yet what display on the screen
+// because the menu should be based on that and not the opposite
+// should work on the menu since the idea is not to render content off of it
+// but to tweak the ui or provide some functionality related to the content
+// maybe with dropdowns which looks cool
 
-// to be defined dynamically
-// query consists of keyword input by the user to find a list of films
-// id can be associated to a specific film to get its details
-let query = "";
-let id = "";
+// now the propose the user a series of results in the form of a list or smt
+// which can be clicked to fetch details of it
 
-// should have a button on the navbar or something to change the language
-// for now only the api responses will change language
-// only use the prefix (e.g. it) or leave blank for english as default
-let language = "";
+// add a working loading icon (the api errors are already covered in each component)
 
 const App = () => {
-  const [content, setContent] = useState("discover");
-
-  // update this with the entry in the menu
-  // other entry in the menu could be companies, countries, genres specific searches, random searches
-  const renderContent = (content) => {
-    switch (content) {
-      case "discover":
-        return <Discover query={query} language={language} />;
-      case "details":
-        return <Details id={id} language={language} />;
-      default:
-        return null;
-    }
-  };
+  const [query, setQuery] = useState("");
+  const [id, setId] = useState(0);
+  const [language, setLanguage] = useState("");
 
   return (
     <Layout>
@@ -54,16 +39,6 @@ const App = () => {
             {
               label: "Discover",
               key: "discover",
-              onClick: function () {
-                setContent("discover");
-              },
-            },
-            {
-              label: "Details",
-              key: "details",
-              onClick: function () {
-                setContent("details");
-              },
             },
           ]}
           defaultSelectedKeys={["discover"]}
@@ -77,7 +52,36 @@ const App = () => {
           background: "#fff",
         }}
       >
-        {renderContent(content)}
+        <div>
+          <div
+            style={{
+              padding: "20px",
+            }}
+          >
+            <Select
+              defaultValue="en"
+              style={{ width: "60px" }}
+              onChange={(value) => {
+                setLanguage(value);
+              }}
+            >
+              <Option value="en">en</Option>
+              <Option value="it">it</Option>
+            </Select>
+            <Search
+              placeholder="input search text"
+              enterButton="Search"
+              size="medium"
+              style={{
+                maxWidth: "200px",
+              }}
+              onSearch={(value) => {
+                setQuery(value);
+              }}
+            />
+          </div>
+          <SearchResultsList query={query} language={language} />
+        </div>
       </Content>
       <Footer style={{ textAlign: "center" }}>Footer</Footer>
     </Layout>

@@ -1,6 +1,7 @@
 import axios from "axios";
 import APIKEY from "../config";
 import { useEffect, useState } from "react";
+import { Empty } from "antd";
 
 // pass the id of a movie and get all of its details
 
@@ -82,8 +83,7 @@ const Details = (props) => {
       </div>
     );
 
-  // do it with a cool icon
-  return <div>no data</div>;
+  return <Empty />;
 };
 
 export default Details;
