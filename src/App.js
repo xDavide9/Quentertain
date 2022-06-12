@@ -1,27 +1,15 @@
 import { Layout, Menu, Input, Select } from "antd";
 import { useState } from "react";
-import SearchResultsList from "./components/SearchResultsList";
+import PostersGrid from "./components/PostersGrid";
 import "antd/dist/antd.min.css";
 
 const { Header, Content, Footer } = Layout;
 const { Search } = Input;
 const { Option } = Select;
 
-// do not make the mistake of working on the menu if you dont know yet what display on the screen
-// because the menu should be based on that and not the opposite
-// should work on the menu since the idea is not to render content off of it
-// but to tweak the ui or provide some functionality related to the content
-// maybe with dropdowns which looks cool
-
-// now the propose the user a series of results in the form of a list or smt
-// which can be clicked to fetch details of it
-
-// add a working loading icon (the api errors are already covered in each component)
-
 const App = () => {
   const [query, setQuery] = useState("");
-  const [id, setId] = useState(0);
-  const [language, setLanguage] = useState("");
+  const [language, setLanguage] = useState("en");
 
   return (
     <Layout>
@@ -42,7 +30,7 @@ const App = () => {
             },
           ]}
           defaultSelectedKeys={["discover"]}
-        ></Menu>
+        />
       </Header>
       <Content
         style={{
@@ -74,13 +62,14 @@ const App = () => {
               size="medium"
               style={{
                 maxWidth: "200px",
+                zIndex: 0,
               }}
               onSearch={(value) => {
                 setQuery(value);
               }}
             />
           </div>
-          <SearchResultsList query={query} language={language} />
+          <PostersGrid query={query} language={language} />
         </div>
       </Content>
       <Footer style={{ textAlign: "center" }}>Footer</Footer>
