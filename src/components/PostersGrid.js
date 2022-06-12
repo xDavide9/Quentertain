@@ -63,7 +63,7 @@ const PostersGrid = (props) => {
           });
         }}
         style={{
-          paddingBottom: "10px",
+          padding: "20px",
         }}
       />
     </div>

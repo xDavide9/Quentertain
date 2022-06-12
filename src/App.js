@@ -62,7 +62,6 @@ const App = () => {
               size="medium"
               style={{
                 maxWidth: "200px",
-                zIndex: 0,
               }}
               onSearch={(value) => {
                 setQuery(value);
