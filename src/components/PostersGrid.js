@@ -3,6 +3,8 @@ import APIKEY from "../config";
 import { useEffect, useState } from "react";
 import { Empty, Pagination } from "antd";
 
+// useTransitions
+
 const PostersGrid = (props) => {
   const [isSuccessfulRequest, setSuccessfulRequest] = useState(false);
   const [results, setResults] = useState([]);
@@ -25,6 +27,10 @@ const PostersGrid = (props) => {
         setSuccessfulRequest(false);
       });
   }, [props.query, props.language, page]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [props.query]);
 
   if (results.length === 0 || !isSuccessfulRequest) return <Empty />;
 
@@ -62,6 +68,7 @@ const PostersGrid = (props) => {
             behavior: "smooth",
           });
         }}
+        current={page}
         style={{
           padding: "20px",
         }}
