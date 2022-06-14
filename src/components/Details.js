@@ -34,7 +34,7 @@ const Details = (props) => {
   if (isSuccessfulRequest)
     return (
       // create gui
-      <div>
+      <>
         <p>TITLE: {film.title} </p>
         <p>OVERVIEW: {film.overview} </p>
         <p>TAGLINE: {film.tagline} </p>
@@ -80,7 +80,7 @@ const Details = (props) => {
             alt="backdrop"
           />
         </p>
-      </div>
+      </>
     );
 
   return <Empty />;

@@ -29,7 +29,7 @@ const PostersGrid = (props) => {
   if (results.length === 0 || !isSuccessfulRequest) return <Empty />;
 
   return (
-    <div>
+    <>
       {results.map((result) => {
         if (result.release_date === "" || result.poster_path === null)
           return null;
@@ -66,7 +66,7 @@ const PostersGrid = (props) => {
           padding: "20px",
         }}
       />
-    </div>
+    </>
   );
 };
 

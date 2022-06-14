@@ -7,6 +7,8 @@ const { Header, Content, Footer } = Layout;
 const { Search } = Input;
 const { Option } = Select;
 
+// continue developing overall features of the app and then improve details later
+
 const App = () => {
   const [query, setQuery] = useState("");
   const [language, setLanguage] = useState("en");
