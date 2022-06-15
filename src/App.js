@@ -1,80 +1,48 @@
-import { Layout, Menu, Input, Select } from "antd";
-import { useState } from "react";
-import PostersGrid from "./components/PostersGrid";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Layout, Menu } from "antd";
+import Discover from "./discover/Discover";
 import "antd/dist/antd.min.css";
 
 const { Header, Content, Footer } = Layout;
-const { Search } = Input;
-const { Option } = Select;
 
-// continue developing overall features of the app and then improve details later
+// resolve menu item issue
 
 const App = () => {
-  const [query, setQuery] = useState("");
-  const [language, setLanguage] = useState("en");
-
   return (
-    <Layout>
-      <Header
-        style={{
-          position: "fixed",
-          zIndex: 1,
-          width: "100%",
-        }}
-      >
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          items={[
-            {
-              label: "Discover",
-              key: "discover",
-            },
-          ]}
-          defaultSelectedKeys={["discover"]}
-        />
-      </Header>
-      <Content
-        style={{
-          minHeight: "1200px",
-          textAlign: "center",
-          margin: "96px 32px 0px 32px",
-          background: "#fff",
-        }}
-      >
-        <div>
-          <div
-            style={{
-              padding: "20px",
-            }}
-          >
-            <Select
-              defaultValue="en"
-              style={{ width: "60px" }}
-              onChange={(value) => {
-                setLanguage(value);
-              }}
-            >
-              <Option value="en">en</Option>
-              <Option value="it">it</Option>
-            </Select>
-            <Search
-              placeholder="input search text"
-              enterButton="Search"
-              size="medium"
-              style={{
-                maxWidth: "200px",
-              }}
-              onSearch={(value) => {
-                setQuery(value);
-              }}
-            />
-          </div>
-          <PostersGrid query={query} language={language} />
-        </div>
-      </Content>
-      <Footer style={{ textAlign: "center" }}>Footer</Footer>
-    </Layout>
+    <Router>
+      <Layout>
+        <Header
+          style={{
+            position: "fixed",
+            zIndex: 1,
+            width: "100%",
+          }}
+        >
+          <Menu theme="dark" mode="horizontal">
+            <Menu.Item>
+              <Link to={"/"}>Home</Link>
+            </Menu.Item>
+            <Menu.Item>
+              <Link to={"/discover"}>Discover</Link>
+            </Menu.Item>
+          </Menu>
+        </Header>
+        <Content
+          style={{
+            minHeight: "1200px",
+            margin: "64px 32px 0px 32px",
+            background: "#fff",
+          }}
+        >
+          <Routes>
+            <Route path="/" element={<div>THIS IS HOME</div>} />
+            <Route path="/discover" element={<Discover />} />
+            <Route path="*" element={<div>ERROR 404</div>} />
+          </Routes>
+        </Content>
+        <Footer style={{ textAlign: "center" }}>Footer</Footer>
+      </Layout>
+    </Router>
   );
 };
 
