@@ -3,6 +3,8 @@ import APIKEY from "../config";
 import { useEffect, useState } from "react";
 import { Empty, Pagination } from "antd";
 
+// useParams
+
 const PostersGrid = (props) => {
   const [isSuccessfulRequest, setSuccessfulRequest] = useState(false);
   const [results, setResults] = useState([]);
