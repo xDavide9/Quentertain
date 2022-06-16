@@ -1,11 +1,11 @@
-import { Input, Select } from "antd";
 import { useState } from "react";
+import { Input, Select } from "antd";
 import PostersGrid from "./PostersGrid";
 
 const { Search } = Input;
 const { Option } = Select;
 
-const Discover = () => {
+const SearchBar = () => {
   const [query, setQuery] = useState("");
   const [language, setLanguage] = useState("en");
 
@@ -47,4 +47,4 @@ const Discover = () => {
   );
 };
 
-export default Discover;
+export default SearchBar;

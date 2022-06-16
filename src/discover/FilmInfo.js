@@ -1,11 +1,11 @@
 import axios from "axios";
 import APIKEY from "../config";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { Empty } from "antd";
 
-// pass the id of a movie and get all of its details
-
-const Details = (props) => {
+const FilmInfo = () => {
+  const { id, language } = useParams();
   const [isSuccessfulRequest, setSuccessfulRequest] = useState(false);
   const [film, setFilm] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -15,7 +15,7 @@ const Details = (props) => {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${props.id}?api_key=${APIKEY}&language=${props.language}`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${APIKEY}&language=${language}`
       )
       .then((res) => {
         console.log(res);
@@ -29,7 +29,7 @@ const Details = (props) => {
         console.log(err);
         setSuccessfulRequest(false);
       });
-  }, [props.id, props.language]);
+  }, [id, language]);
 
   if (isSuccessfulRequest)
     return (
@@ -86,4 +86,4 @@ const Details = (props) => {
   return <Empty />;
 };
 
-export default Details;
+export default FilmInfo;

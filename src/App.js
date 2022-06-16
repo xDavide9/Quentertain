@@ -1,6 +1,10 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { Layout, Menu } from "antd";
-import Discover from "./discover/Discover";
+import { ArrowRightOutlined, HomeOutlined } from "@ant-design/icons";
+import Home from "./home/Home";
+import SearchBar from "./discover/SearchBar";
+import FilmInfo from "./discover/FilmInfo";
+import ErrorPage from "./ErrorPage";
 import "antd/dist/antd.min.css";
 
 const { Header, Content, Footer } = Layout;
@@ -24,6 +28,7 @@ const App = () => {
             {
               label: "Home",
               key: "home",
+              icon: <HomeOutlined />,
               onClick: function () {
                 navigate("/");
               },
@@ -31,6 +36,7 @@ const App = () => {
             {
               label: "Discover",
               key: "discover",
+              icon: <ArrowRightOutlined />,
               onClick: function () {
                 navigate("/discover");
               },
@@ -47,9 +53,10 @@ const App = () => {
         }}
       >
         <Routes>
-          <Route exact path="/" element={<div>THIS IS HOME</div>} />
-          <Route exact path="/discover" element={<Discover />} />
-          <Route path="*" element={<div>ERROR 404</div>} />
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/discover" element={<SearchBar />} />
+          <Route exact path="/discover/:id/:language" element={<FilmInfo />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Content>
       <Footer style={{ textAlign: "center" }}>Footer</Footer>

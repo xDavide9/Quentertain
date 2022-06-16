@@ -1,9 +1,8 @@
 import axios from "axios";
 import APIKEY from "../config";
 import { useEffect, useState } from "react";
-import { Empty, Pagination } from "antd";
-
-// useParams
+import { Link } from "react-router-dom";
+import { Empty, Image, Pagination } from "antd";
 
 const PostersGrid = (props) => {
   const [isSuccessfulRequest, setSuccessfulRequest] = useState(false);
@@ -47,12 +46,14 @@ const PostersGrid = (props) => {
               display: "inline-grid",
             }}
           >
-            <img
-              width="300px"
-              height="450px"
-              src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
-              alt="poster"
-            />
+            <Link to={`/discover/${result.id}/${props.language}`}>
+              <Image
+                width="300px"
+                height="450px"
+                src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
+                alt="poster"
+              />
+            </Link>
           </div>
         );
       })}
