@@ -3,7 +3,9 @@ import APIKEY from "../config";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Empty, Pagination } from "antd";
+import { Empty, Pagination, Typography } from "antd";
+import { EyeOutlined } from "@ant-design/icons";
+import "./PostersGrid.css";
 
 const PostersGrid = (props) => {
   const [isSuccessfulRequest, setSuccessfulRequest] = useState(false);
@@ -55,23 +57,23 @@ const PostersGrid = (props) => {
           return null;
         return (
           <div
-            key={result.id}
             style={{
               display: "inline-grid",
               margin: "10px",
             }}
           >
             <Link to={`/discover/${result.id}/${props.language}`}>
-              <motion.img
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ delay: 0.2 }}
-                width="300px"
-                height="450px"
-                src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
-                alt="poster"
-              />
+              <div className="img-wrapper">
+                <img
+                  width="300px"
+                  height="450px"
+                  src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
+                  alt="poster"
+                />
+                <Typography className="content fade">
+                  Preview <EyeOutlined />
+                </Typography>
+              </div>
             </Link>
           </div>
         );
@@ -81,16 +83,14 @@ const PostersGrid = (props) => {
         total={totalPages}
         showSizeChanger={false}
         pageSize="1"
+        current={page}
+        style={{ paddingBottom: "10px" }}
         onChange={(value) => {
           setPage(value);
           window.scrollTo({
             top: 0,
             behavior: "smooth",
           });
-        }}
-        current={page}
-        style={{
-          padding: "20px",
         }}
       />
     </motion.div>

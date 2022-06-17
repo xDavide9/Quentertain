@@ -15,9 +15,7 @@ const SearchBar = () => {
 
   return (
     <motion.div
-      style={{
-        textAlign: "center",
-      }}
+      style={{ textAlign: "center" }}
       initial={{ opacity: 0 }}
       transition={{ delay: 0.3 }}
       animate={{ opacity: 1 }}
@@ -43,9 +41,7 @@ const SearchBar = () => {
           placeholder="input search text"
           enterButton="Search"
           size="medium"
-          style={{
-            width: "200px",
-          }}
+          style={{ width: "200px" }}
           onSearch={(value) => {
             if (value === "") return;
             setQuery(value);

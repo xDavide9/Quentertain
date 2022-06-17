@@ -1,0 +1,28 @@
+.img-wrapper {
+  position: relative;
+}
+
+.img-wrapper > .content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: medium;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.img-wrapper > .content.fade {
+  opacity: 0;
+}
+
+.img-wrapper:hover > .content.fade {
+  opacity: 1;
+}
+
+.img-wrapper > img,
+.img-wrapper > .content {
+  transition: 200ms ease-in-out;
+}

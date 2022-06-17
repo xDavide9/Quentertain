@@ -50,7 +50,7 @@ const App = () => {
       <Content
         style={{
           minHeight: "1200px",
-          margin: "64px 50px 0px 50px",
+          margin: "96px 50px 0px 50px",
           background: "#fff",
         }}
       >
