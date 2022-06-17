@@ -2,6 +2,7 @@ import axios from "axios";
 import APIKEY from "../config";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Empty } from "antd";
 
 const FilmInfo = () => {
@@ -34,7 +35,11 @@ const FilmInfo = () => {
   if (isSuccessfulRequest)
     return (
       // create gui
-      <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
         <p>TITLE: {film.title} </p>
         <p>OVERVIEW: {film.overview} </p>
         <p>TAGLINE: {film.tagline} </p>
@@ -80,7 +85,7 @@ const FilmInfo = () => {
             alt="backdrop"
           />
         </p>
-      </>
+      </motion.div>
     );
 
   return <Empty />;

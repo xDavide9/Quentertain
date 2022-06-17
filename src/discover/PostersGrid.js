@@ -2,7 +2,8 @@ import axios from "axios";
 import APIKEY from "../config";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Empty, Image, Pagination } from "antd";
+import { motion } from "framer-motion";
+import { Empty, Pagination } from "antd";
 
 const PostersGrid = (props) => {
   const [isSuccessfulRequest, setSuccessfulRequest] = useState(false);
@@ -31,10 +32,24 @@ const PostersGrid = (props) => {
     setPage(1);
   }, [props.query]);
 
-  if (results.length === 0 || !isSuccessfulRequest) return <Empty />;
+  if (results.length === 0 || !isSuccessfulRequest)
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ delay: 1 }}
+      >
+        <Empty />
+      </motion.div>
+    );
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       {results.map((result) => {
         if (result.release_date === "" || result.poster_path === null)
           return null;
@@ -42,12 +57,16 @@ const PostersGrid = (props) => {
           <div
             key={result.id}
             style={{
-              margin: "10px",
               display: "inline-grid",
+              margin: "10px",
             }}
           >
             <Link to={`/discover/${result.id}/${props.language}`}>
-              <Image
+              <motion.img
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ delay: 0.2 }}
                 width="300px"
                 height="450px"
                 src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
@@ -74,7 +93,7 @@ const PostersGrid = (props) => {
           padding: "20px",
         }}
       />
-    </>
+    </motion.div>
   );
 };
 
