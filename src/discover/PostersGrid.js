@@ -59,7 +59,7 @@ const PostersGrid = (props) => {
           <div
             style={{
               display: "inline-grid",
-              margin: "10px",
+              margin: "9px",
             }}
           >
             <Link to={`/discover/${result.id}/${props.language}`}>
@@ -84,7 +84,7 @@ const PostersGrid = (props) => {
         showSizeChanger={false}
         pageSize="1"
         current={page}
-        style={{ paddingBottom: "10px" }}
+        style={{ padding: "11px 0 20px 0" }}
         onChange={(value) => {
           setPage(value);
           window.scrollTo({
