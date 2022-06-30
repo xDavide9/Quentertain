@@ -1,5 +1,6 @@
 import { Typography, Divider } from "antd";
 import { motion } from "framer-motion";
+import Wrapper from "../util/Wrapper";
 
 const Home = () => {
   return (
@@ -12,33 +13,31 @@ const Home = () => {
         justifyContent: "center",
       }}
     >
-      <div
-        style={{
-          minWidth: "900px",
-          maxWidth: "900px",
-          minHeight: "1200px",
-          overflowWrap: "break-word",
-          textAlign: "center",
-          fontWeight: "lighter",
-        }}
-      >
-        <Typography
+      <Wrapper>
+        <div
           style={{
-            fontSize: "50px",
-            paddingTop: "15px",
+            textAlign: "center",
+            fontWeight: "lighter",
           }}
         >
-          Quentertain
-        </Typography>
-        <Divider />
-        <Typography
-          style={{
-            fontSize: "22px",
-          }}
-        >
-          Find your new favourite films!
-        </Typography>
-      </div>
+          <Typography
+            style={{
+              fontSize: "50px",
+              paddingTop: "15px",
+            }}
+          >
+            Quentertain
+          </Typography>
+          <Divider />
+          <Typography
+            style={{
+              fontSize: "22px",
+            }}
+          >
+            Find your new favourite films!
+          </Typography>
+        </div>
+      </Wrapper>
     </motion.div>
   );
 };
