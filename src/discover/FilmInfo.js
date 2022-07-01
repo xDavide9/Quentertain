@@ -233,9 +233,11 @@ const FilmInfo = () => {
                 headStyle={{ fontSize: "20p" }}
                 bodyStyle={{ fontSize: "16px" }}
               >
-                {genres.map((genre) => (
-                  <p>{String(genre.name)}</p>
-                ))}
+                {genres.length === 0 ? (
+                  <>N/A</>
+                ) : (
+                  genres.map((genre) => <p>{String(genre.name)}</p>)
+                )}
               </Card>
             </Col>
             <Col span={8}>
@@ -245,9 +247,11 @@ const FilmInfo = () => {
                 headStyle={{ fontSize: "20p" }}
                 bodyStyle={{ fontSize: "16px" }}
               >
-                {companies.map((company) => (
-                  <p>{String(company.name)}</p>
-                ))}
+                {companies.length === 0 ? (
+                  <>N/A</>
+                ) : (
+                  companies.map((company) => <p>{String(company.name)}</p>)
+                )}
               </Card>
             </Col>
             <Col span={8}>
@@ -257,9 +261,11 @@ const FilmInfo = () => {
                 headStyle={{ fontSize: "20p" }}
                 bodyStyle={{ fontSize: "16px" }}
               >
-                {countries.map((country) => (
-                  <p>{String(country.name)}</p>
-                ))}
+                {countries.length === 0 ? (
+                  <>N/A</>
+                ) : (
+                  countries.map((country) => <p>{String(country.name)}</p>)
+                )}
               </Card>
             </Col>
           </Row>
