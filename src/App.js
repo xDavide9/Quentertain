@@ -29,7 +29,7 @@ const App = () => {
           items={[
             {
               label: "Home",
-              key: "home",
+              key: "/",
               icon: <HomeOutlined />,
               onClick: function () {
                 navigate("/");
@@ -37,14 +37,14 @@ const App = () => {
             },
             {
               label: "Discover",
-              key: "discover",
+              key: "/discover",
               icon: <ArrowRightOutlined />,
               onClick: function () {
                 navigate("/discover");
               },
             },
           ]}
-          defaultSelectedKeys={["home"]}
+          selectedKeys={[location.pathname]}
         />
       </Header>
       <Content
@@ -67,7 +67,7 @@ const App = () => {
           </Routes>
         </AnimatePresence>
       </Content>
-      <Footer style={{ textAlign: "center" }}>Footer</Footer>
+      <Footer style={{ textAlign: "center" }}>© 2022 Quentertain.</Footer>
     </Layout>
   );
 };
