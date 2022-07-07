@@ -1,8 +1,15 @@
-import { Typography, Divider } from "antd";
+// create home page
+
+import { Typography, Divider, Button, Row } from "antd";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import Wrapper from "../util/Wrapper";
 
+const { Title, Paragraph } = Typography;
+
 const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -14,29 +21,14 @@ const Home = () => {
       }}
     >
       <Wrapper>
-        <div
-          style={{
-            textAlign: "center",
-            fontWeight: "lighter",
+        <Button
+          type="primary"
+          onClick={function () {
+            navigate("/discover");
           }}
         >
-          <Typography
-            style={{
-              fontSize: "50px",
-              paddingTop: "15px",
-            }}
-          >
-            Quentertain
-          </Typography>
-          <Divider />
-          <Typography
-            style={{
-              fontSize: "22px",
-            }}
-          >
-            Find your new favourite films!
-          </Typography>
-        </div>
+          Start Now
+        </Button>
       </Wrapper>
     </motion.div>
   );

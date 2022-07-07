@@ -14,6 +14,9 @@ const App = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // location updates itself everytime you navigate to a different page
+  // useful to handle navigation and let the menu update when you change from a different source
+
   return (
     <Layout>
       <Header
@@ -52,6 +55,7 @@ const App = () => {
           minHeight: "1200px",
           margin: "96px 50px 0px 50px",
           background: "#fff",
+          overflow: "auto",
         }}
       >
         <AnimatePresence>
@@ -67,7 +71,7 @@ const App = () => {
           </Routes>
         </AnimatePresence>
       </Content>
-      <Footer style={{ textAlign: "center" }}>© 2022 Quentertain.</Footer>
+      <Footer style={{ textAlign: "center" }}>2022 Quentertain.</Footer>
     </Layout>
   );
 };

@@ -128,7 +128,7 @@ const FilmInfo = () => {
                 <Descriptions
                   layout="vertical"
                   bordered
-                  contentStyle={{ fontSize: "18px" }}
+                  contentStyle={{ fontSize: "17px" }}
                   labelStyle={{ fontSize: "18px" }}
                   style={{ paddingBottom: " 20px" }}
                 >
@@ -230,7 +230,7 @@ const FilmInfo = () => {
               <Card
                 title="Genres"
                 hoverable
-                headStyle={{ fontSize: "20p" }}
+                headStyle={{ fontSize: "20px" }}
                 bodyStyle={{ fontSize: "16px" }}
               >
                 {genres.length === 0 ? (
