@@ -1,39 +1,30 @@
-// create home page
-
-import { Typography, Divider, Button, Row } from "antd";
+import "./Home.css";
+import { Typography, Button } from "antd";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import Wrapper from "../util/Wrapper";
+import logo from "./tmdblogo.svg";
 
-const { Title, Paragraph } = Typography;
+const { Title } = Typography;
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
     <motion.div
+      className="fullscreen"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      style={{
-        display: "flex",
-        justifyContent: "center",
-      }}
     >
-      <Wrapper>
-        <Button
-          type="primary"
-          onClick={function () {
-            navigate("/discover");
-          }}
-        >
-          Start Now
-        </Button>
-      </Wrapper>
+      <Title style={{ fontSize: "50px", color: "white", margin: 0 }}>
+        Quentertain
+      </Title>
+      <img src={logo} alt="tdmb logo" style={{ width: "200px" }} />
+      <Button type="primary" onClick={() => navigate("/discover")}>
+        Start Now
+      </Button>
     </motion.div>
   );
 };
-
-// make the background same as logo and write some info about the app
 
 export default Home;

@@ -56,7 +56,10 @@ const PostersGrid = (props) => {
         if (result.release_date === "" || result.poster_path === null)
           return null;
         return (
-          <div
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             style={{
               display: "inline-grid",
               margin: "9px",
@@ -75,7 +78,7 @@ const PostersGrid = (props) => {
                 </Typography>
               </div>
             </Link>
-          </div>
+          </motion.div>
         );
       })}
       <Pagination

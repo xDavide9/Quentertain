@@ -1,78 +1,38 @@
+import "./App.css";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import { Layout, Menu } from "antd";
-import { ArrowRightOutlined, HomeOutlined } from "@ant-design/icons";
-import Home from "./home/Home";
 import SearchBar from "./discover/SearchBar";
 import FilmInfo from "./discover/FilmInfo";
 import ErrorPage from "./ErrorPage";
-import "./App.css";
+import Home from "./home/Home";
+import CustomLayout from "./util/CustomLayout";
 
-const { Header, Content, Footer } = Layout;
+// https://www.themoviedb.org/documentation/api/discover
 
 const App = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // location updates itself everytime you navigate to a different page
-  // useful to handle navigation and let the menu update when you change from a different source
+  if (location.pathname === "/") {
+    window.scrollTo(0, 0);
+    document.body.style.overflow = "hidden";
+    console.log("hidden");
+  } else {
+    document.body.style.overflow = "auto";
+    console.log("auto");
+  }
 
   return (
-    <Layout>
-      <Header
-        style={{
-          position: "fixed",
-          zIndex: 1,
-          width: "100%",
-        }}
-      >
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          items={[
-            {
-              label: "Home",
-              key: "/",
-              icon: <HomeOutlined />,
-              onClick: function () {
-                navigate("/");
-              },
-            },
-            {
-              label: "Discover",
-              key: "/discover",
-              icon: <ArrowRightOutlined />,
-              onClick: function () {
-                navigate("/discover");
-              },
-            },
-          ]}
-          selectedKeys={[location.pathname]}
-        />
-      </Header>
-      <Content
-        style={{
-          minHeight: "1200px",
-          margin: "96px 50px 0px 50px",
-          background: "#fff",
-          overflow: "auto",
-        }}
-      >
-        <AnimatePresence>
-          <Routes location={location} key={location.pathname}>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/discover" element={<SearchBar />} />
-            <Route
-              exact
-              path="/discover/:id/:language"
-              element={<FilmInfo />}
-            />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-        </AnimatePresence>
-      </Content>
-      <Footer style={{ textAlign: "center" }}>2022 Quentertain.</Footer>
-    </Layout>
+    <CustomLayout navigate={navigate} location={location}>
+      <AnimatePresence>
+        <Routes location={location} key={location.pathname}>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/discover" element={<SearchBar />} />
+          <Route exact path="/discover/:id/:language" element={<FilmInfo />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </AnimatePresence>
+    </CustomLayout>
   );
 };
 
