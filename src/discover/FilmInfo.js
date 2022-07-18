@@ -1,5 +1,4 @@
 import axios from "axios";
-import APIKEY from "../config";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -32,10 +31,14 @@ const FilmInfo = () => {
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {
+    const options = {
+      method: "GET",
+      url: "http://localhost:8080/api/v1/filminfo",
+      params: { id: id, language: language },
+    };
+
     axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${APIKEY}&language=${language}`
-      )
+      .request(options)
       .then((res) => {
         console.log(res);
         setFilm(res.data);
@@ -295,7 +298,7 @@ const FilmInfo = () => {
       </motion.div>
     );
 
-  return <Empty />;
+  return <Empty style={{ paddingTop: "15px" }} />;
 };
 
 export default FilmInfo;

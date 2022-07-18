@@ -9,7 +9,10 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^4.21.0",
     "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
     "framer-motion": "^6.3.11",
+    "nodemon": "^2.0.19",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
@@ -17,7 +20,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start:backend": "nodemon backend.js",
+    "start:frontend": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

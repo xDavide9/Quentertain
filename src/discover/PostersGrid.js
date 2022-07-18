@@ -1,5 +1,4 @@
 import axios from "axios";
-import APIKEY from "../config";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -14,10 +13,14 @@ const PostersGrid = (props) => {
   const [totalPages, setTotalPages] = useState();
 
   useEffect(() => {
+    const options = {
+      method: "GET",
+      url: `http://localhost:8080/api/v1/postersgrid`,
+      params: { query: props.query, language: props.language, page: page },
+    };
+
     axios
-      .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${APIKEY}&query=${props.query}&language=${props.language}&page=${page}`
-      )
+      .request(options)
       .then((res) => {
         console.log(res);
         setResults(res.data.results);
@@ -34,7 +37,7 @@ const PostersGrid = (props) => {
     setPage(1);
   }, [props.query]);
 
-  if (results.length === 0 || !isSuccessfulRequest)
+  if (!isSuccessfulRequest || results.length === 0)
     return (
       <motion.div
         initial={{ opacity: 0 }}

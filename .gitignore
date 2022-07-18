@@ -24,6 +24,7 @@ yarn-error.log*
 
 # config
 config.js
+.env
 
 # data
 public/movie_ids_06_09_2022.json
