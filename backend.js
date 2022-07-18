@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
@@ -11,7 +12,7 @@ app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 app.get("/api/v1/postersgrid", (req, res) => {
   const options = {
     method: "GET",
-    url: `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${req.query.query}&language=${req.query.language}&page=${req.query.page}`,
+    url: `https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&query=${req.query.query}&language=${req.query.language}&page=${req.query.page}`,
   };
 
   axios
@@ -27,7 +28,7 @@ app.get("/api/v1/postersgrid", (req, res) => {
 app.get("/api/v1/filminfo", (req, res) => {
   const options = {
     method: "GET",
-    url: `https://api.themoviedb.org/3/movie/${req.query.id}?api_key=${API_KEY}&language=${req.query.language}`,
+    url: `https://api.themoviedb.org/3/movie/${req.query.id}?api_key=${process.env.API_KEY}&language=${req.query.language}`,
   };
 
   axios
