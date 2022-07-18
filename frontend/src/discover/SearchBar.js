@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Input, Select } from "antd";
+import { Button, Input, Select } from "antd";
 import PostersGrid from "./PostersGrid";
 import keywords from "./keywords";
 import { motion } from "framer-motion";
@@ -29,24 +29,30 @@ const SearchBar = () => {
       >
         <Select
           defaultValue="en"
-          style={{ width: "60px" }}
+          style={{ width: "100px" }}
           onChange={(value) => {
             setLanguage(value);
           }}
         >
-          <Option value="en">en</Option>
-          <Option value="it">it</Option>
+          <Option value="en">English</Option>
+          <Option value="it">Italian</Option>
         </Select>
         <Search
           placeholder="input search text"
           enterButton="Search"
-          size="medium"
           style={{ width: "200px" }}
           onSearch={(value) => {
             if (value === "") return;
             setQuery(value);
           }}
         />
+        <Button
+          onClick={() =>
+            setQuery(keywords[Math.floor(Math.random() * keywords.length)])
+          }
+        >
+          Random
+        </Button>
       </div>
       <PostersGrid query={query} language={language} />
     </motion.div>
