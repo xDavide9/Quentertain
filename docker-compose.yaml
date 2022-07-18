@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  backend:
+    build: ./backend
+    image: xdavide9/quentertain-backend:v1
+    container_name: quentertain-backend-container
+    ports:
+      - "8080:8080"
+  frontend:
+    build: ./frontend
+    image: xdavide9/quentertain-frontend:v1
+    container_name: quentertain-frontend-container
+    ports:
+      - "3000:3000"
