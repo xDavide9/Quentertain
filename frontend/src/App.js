@@ -16,10 +16,8 @@ const App = () => {
   if (location.pathname === "/") {
     window.scrollTo(0, 0);
     document.body.style.overflow = "hidden";
-    console.log("hidden");
   } else {
     document.body.style.overflow = "auto";
-    console.log("auto");
   }
 
   return (

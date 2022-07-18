@@ -15,6 +15,7 @@ import {
   Tooltip,
   Progress,
   Card,
+  notification,
 } from "antd";
 import { ArrowsAltOutlined, ShrinkOutlined } from "@ant-design/icons";
 
@@ -48,7 +49,14 @@ const FilmInfo = () => {
         setSuccessfulRequest(true);
       })
       .catch((err) => {
-        console.log(err);
+        notification.error({
+          message: `Error ${err.response.status}`,
+          description: (
+            <>
+              {err.message} <br /> {err.response.data}
+            </>
+          ),
+        });
         setSuccessfulRequest(false);
       });
   }, [id, language]);

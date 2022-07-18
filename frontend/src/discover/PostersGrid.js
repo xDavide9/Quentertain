@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Empty, Pagination, Typography } from "antd";
+import { Empty, Pagination, Typography, notification } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
 import "./PostersGrid.css";
 
@@ -28,6 +28,14 @@ const PostersGrid = (props) => {
         setSuccessfulRequest(true);
       })
       .catch((err) => {
+        notification.error({
+          message: `Error ${err.response.status}`,
+          description: (
+            <>
+              {err.message} <br /> {err.response.data}
+            </>
+          ),
+        });
         console.log(err);
         setSuccessfulRequest(false);
       });

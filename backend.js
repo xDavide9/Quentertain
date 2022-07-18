@@ -2,11 +2,22 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
-
-const PORT = 8080;
+const rateLimit = require("express-rate-limit");
 const app = express();
 
+const PORT = 8080;
+
+// 150 requests each 15 minutes from an ip
+const minutes = 15;
+const requests = 150;
+
+const limiter = rateLimit({
+  windowMs: minutes * 60 * 1000,
+  max: requests,
+});
+
 app.use(cors());
+app.use(limiter);
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 app.get("/api/v1/postersgrid", (req, res) => {
