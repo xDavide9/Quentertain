@@ -11,7 +11,7 @@
     "nodemon": "^2.0.19"
   },
   "scripts": {
-    "start:backend": "nodemon backend.js",
+    "start:backend": "nodemon src/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
