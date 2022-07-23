@@ -15,7 +15,7 @@ const DiscoverPosters = (props) => {
   useEffect(() => {
     const options = {
       method: "GET",
-      url: `http://localhost:8080/api/v1/posters`,
+      url: `http://localhost:8080/api/v1/discover/posters`,
       params: { query: props.query, language: props.language, page: page },
     };
 
@@ -62,21 +62,21 @@ const DiscoverPosters = (props) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="top-level-container"
+      className="top-level-container-posters"
     >
-      <div className="images-container">
+      <div className="posters-container">
         {results.map((result) => {
           if (result.release_date === "" || result.poster_path === null)
             return null;
           return (
             <Link to={`/discover/${result.id}/${props.language}`}>
-              <div className="img-wrapper">
+              <div className="posters-wrapper">
                 <img
-                  className="img"
+                  className="poster"
                   src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
                   alt="poster"
                 />
-                <Typography className="content fade">
+                <Typography className="poster-content poster-fade">
                   Preview <EyeOutlined />
                 </Typography>
               </div>

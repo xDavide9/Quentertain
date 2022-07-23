@@ -11,12 +11,12 @@ const Home = () => {
 
   return (
     <motion.div
-      className="fullscreen"
+      className="fullscreen home"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <Title className="title">Quentertain</Title>
+      <Title id="home-title">Quentertain</Title>
       <img src={logo} alt="tdmb logo" className="tmdb-logo" />
       <Button type="primary" onClick={() => navigate("/discover")}>
         Start Now

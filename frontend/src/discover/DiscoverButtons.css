@@ -3,3 +3,9 @@
   justify-content: space-around;
   margin: 20px 0;
 }
+
+@media (max-width: 500px) {
+  .buttons-container {
+    justify-content: center;
+  }
+}

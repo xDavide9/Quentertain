@@ -20,7 +20,7 @@ app.use(cors());
 app.use(limiter);
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-app.get("/api/v1/posters", (req, res) => {
+app.get("/api/v1/discover/posters", (req, res) => {
   const options = {
     method: "GET",
     url: `https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&query=${req.query.query}&language=${req.query.language}&page=${req.query.page}`,
@@ -36,7 +36,7 @@ app.get("/api/v1/posters", (req, res) => {
     });
 });
 
-app.get("/api/v1/filminfo", (req, res) => {
+app.get("/api/v1/discover/info", (req, res) => {
   const options = {
     method: "GET",
     url: `https://api.themoviedb.org/3/movie/${req.query.id}?api_key=${process.env.API_KEY}&language=${req.query.language}`,
