@@ -1,3 +1,7 @@
+import "./Wrapper.css";
+
+// redo completely
+
 const Wrapper = (props) => {
   return (
     <div

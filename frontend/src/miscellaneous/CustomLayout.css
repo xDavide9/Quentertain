@@ -1,0 +1,22 @@
+#header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  width: 100%;
+}
+
+#content {
+  min-height: 1200px;
+  margin: 25px;
+  background: white;
+}
+
+#footer {
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  #content {
+    margin: 0px;
+  }
+}

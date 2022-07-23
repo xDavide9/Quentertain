@@ -13,36 +13,18 @@
   height: 100%;
 }
 
-.button {
-  background-image: linear-gradient(to right, #006175 0%, #00a950 100%);
-  border-radius: 40px;
-  box-sizing: border-box;
-  color: #00a84f;
-  display: block;
-  height: 50px;
-  font-size: 1.4em;
-  padding: 4px;
-  position: relative;
-  text-decoration: none;
-  width: 7em;
-  z-index: 2;
+@media (orientation: landscape) {
+  .fullscreen {
+    flex-direction: row;
+  }
 }
 
-.button:hover {
-  color: #fff;
+.title.title {
+  font-size: 50px;
+  color: white;
+  margin: 0;
 }
 
-.button .bn31span {
-  align-items: center;
-  background: #003a8c;
-  border-radius: 40px;
-  display: flex;
-  justify-content: center;
-  height: 100%;
-  transition: background 0.5s ease;
-  width: 100%;
-}
-
-.button:hover .buttonspan {
-  background: transparent;
+.tmdb-logo {
+  width: 200px;
 }

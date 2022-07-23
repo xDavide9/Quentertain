@@ -16,10 +16,8 @@ const Home = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <Title style={{ fontSize: "50px", color: "white", margin: 0 }}>
-        Quentertain
-      </Title>
-      <img src={logo} alt="tdmb logo" style={{ width: "200px" }} />
+      <Title className="title">Quentertain</Title>
+      <img src={logo} alt="tdmb logo" className="tmdb-logo" />
       <Button type="primary" onClick={() => navigate("/discover")}>
         Start Now
       </Button>

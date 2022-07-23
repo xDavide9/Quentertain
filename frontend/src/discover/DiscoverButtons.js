@@ -1,13 +1,14 @@
+import "./DiscoverButtons.css";
 import { useState } from "react";
 import { Button, Input, Select } from "antd";
-import PostersGrid from "./PostersGrid";
+import DiscoverPosters from "./DiscoverPosters";
 import keywords from "./keywords";
 import { motion } from "framer-motion";
 
 const { Search } = Input;
 const { Option } = Select;
 
-const SearchBar = () => {
+const DiscoverButtons = () => {
   const [query, setQuery] = useState(
     () => keywords[Math.floor(Math.random() * keywords.length)]
   );
@@ -15,21 +16,14 @@ const SearchBar = () => {
 
   return (
     <motion.div
-      style={{ textAlign: "center" }}
       initial={{ opacity: 0 }}
       transition={{ delay: 0.3 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div
-        style={{
-          padding: "20px",
-          paddingBottom: "10px",
-        }}
-      >
+      <div className="buttons-container">
         <Select
           defaultValue="en"
-          style={{ width: "100px" }}
           onChange={(value) => {
             setLanguage(value);
           }}
@@ -54,9 +48,9 @@ const SearchBar = () => {
           Random
         </Button>
       </div>
-      <PostersGrid query={query} language={language} />
+      <DiscoverPosters query={query} language={language} />
     </motion.div>
   );
 };
 
-export default SearchBar;
+export default DiscoverButtons;

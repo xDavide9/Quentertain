@@ -1,11 +1,11 @@
 import "./App.css";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import SearchBar from "./discover/SearchBar";
-import FilmInfo from "./discover/FilmInfo";
-import ErrorPage from "./ErrorPage";
+import ErrorPage from "./miscellaneous/ErrorPage";
 import Home from "./home/Home";
-import CustomLayout from "./util/CustomLayout";
+import CustomLayout from "./miscellaneous/CustomLayout";
+import DiscoverButtons from "./discover/DiscoverButtons";
+import DiscoverInfo from "./discover/DiscoverInfo";
 
 // https://www.themoviedb.org/documentation/api/discover
 
@@ -25,8 +25,12 @@ const App = () => {
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/discover" element={<SearchBar />} />
-          <Route exact path="/discover/:id/:language" element={<FilmInfo />} />
+          <Route exact path="/discover" element={<DiscoverButtons />} />
+          <Route
+            exact
+            path="/discover/:id/:language"
+            element={<DiscoverInfo />}
+          />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </AnimatePresence>

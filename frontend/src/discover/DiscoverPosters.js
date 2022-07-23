@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Empty, Pagination, Typography, notification } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
-import "./PostersGrid.css";
+import "./DiscoverPosters.css";
 
-const PostersGrid = (props) => {
+const DiscoverPosters = (props) => {
   const [isSuccessfulRequest, setSuccessfulRequest] = useState(false);
   const [results, setResults] = useState([]);
   const [page, setPage] = useState(1);
@@ -15,7 +15,7 @@ const PostersGrid = (props) => {
   useEffect(() => {
     const options = {
       method: "GET",
-      url: `http://localhost:8080/api/v1/postersgrid`,
+      url: `http://localhost:8080/api/v1/posters`,
       params: { query: props.query, language: props.language, page: page },
     };
 
@@ -62,25 +62,17 @@ const PostersGrid = (props) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      className="top-level-container"
     >
-      {results.map((result) => {
-        if (result.release_date === "" || result.poster_path === null)
-          return null;
-        return (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            style={{
-              display: "inline-grid",
-              margin: "9px",
-            }}
-          >
+      <div className="images-container">
+        {results.map((result) => {
+          if (result.release_date === "" || result.poster_path === null)
+            return null;
+          return (
             <Link to={`/discover/${result.id}/${props.language}`}>
               <div className="img-wrapper">
                 <img
-                  width="300px"
-                  height="450px"
+                  className="img"
                   src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
                   alt="poster"
                 />
@@ -89,16 +81,16 @@ const PostersGrid = (props) => {
                 </Typography>
               </div>
             </Link>
-          </motion.div>
-        );
-      })}
+          );
+        })}
+      </div>
       <Pagination
         defaultCurrent={1}
         total={totalPages}
         showSizeChanger={false}
         pageSize="1"
         current={page}
-        style={{ padding: "11px 0 20px 0" }}
+        style={{ margin: "20px 0", textAlign: "center" }}
         onChange={(value) => {
           setPage(value);
           window.scrollTo({
@@ -111,4 +103,4 @@ const PostersGrid = (props) => {
   );
 };
 
-export default PostersGrid;
+export default DiscoverPosters;

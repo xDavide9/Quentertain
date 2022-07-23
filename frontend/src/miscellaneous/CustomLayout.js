@@ -1,3 +1,4 @@
+import "./CustomLayout.css";
 import { Layout, Menu } from "antd";
 import { ArrowRightOutlined, HomeOutlined } from "@ant-design/icons";
 
@@ -6,13 +7,7 @@ const { Header, Content, Footer } = Layout;
 const CustomLayout = (props) => {
   return (
     <Layout>
-      <Header
-        style={{
-          position: "fixed",
-          zIndex: 1,
-          width: "100%",
-        }}
-      >
+      <Header id="header">
         <Menu
           theme="dark"
           mode="horizontal"
@@ -21,7 +16,7 @@ const CustomLayout = (props) => {
               label: "Home",
               key: "/",
               icon: <HomeOutlined />,
-              onClick: function () {
+              onClick: () => {
                 props.navigate("/");
               },
             },
@@ -29,7 +24,7 @@ const CustomLayout = (props) => {
               label: "Discover",
               key: "/discover",
               icon: <ArrowRightOutlined />,
-              onClick: function () {
+              onClick: () => {
                 props.navigate("/discover");
               },
             },
@@ -37,17 +32,8 @@ const CustomLayout = (props) => {
           selectedKeys={[props.location.pathname]}
         />
       </Header>
-      <Content
-        style={{
-          minHeight: "1200px",
-          margin: "96px 50px 0px 50px",
-          background: "#fff",
-          overflow: "auto",
-        }}
-      >
-        {props.children}
-      </Content>
-      <Footer style={{ textAlign: "center" }}>2022 Quentertain & TMDb.</Footer>
+      <Content id="content">{props.children}</Content>
+      <Footer id="footer">2022 Quentertain & TMDb.</Footer>
     </Layout>
   );
 };

@@ -1,8 +1,9 @@
+import "./DiscoverInfo.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import Wrapper from "../util/Wrapper";
+import Wrapper from "../miscellaneous/Wrapper";
 import {
   Empty,
   Row,
@@ -22,7 +23,7 @@ import { ArrowsAltOutlined, ShrinkOutlined } from "@ant-design/icons";
 const { Title, Paragraph } = Typography;
 const { Item } = Descriptions;
 
-const FilmInfo = () => {
+const DiscoverInfo = () => {
   const { id, language } = useParams();
   const [isSuccessfulRequest, setSuccessfulRequest] = useState(false);
   const [film, setFilm] = useState([]);
@@ -309,4 +310,4 @@ const FilmInfo = () => {
   return <Empty style={{ paddingTop: "15px" }} />;
 };
 
-export default FilmInfo;
+export default DiscoverInfo;
